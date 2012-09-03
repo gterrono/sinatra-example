@@ -53,7 +53,7 @@ nmap \c  <Plug>NERDCommenterToggle
 xmap \cc <Plug>NERDCommenterComment
 nmap \cc <Plug>NERDCommenterComment
 nmap gx <Plug>NetrwBrowseX
-map mks :mksession sess
+map mks :mksession! sess
 map qq :wq
 map z :w :!ruby -c %
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
@@ -117,10 +117,11 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 views/index.erb
 badd +0 sample_app.rb
+badd +0 models.rb
+badd +0 views/index.erb
 badd +0 views/layout.erb
-args views/index.erb
+args sample_app.rb
 edit sample_app.rb
 set splitbelow splitright
 set nosplitbelow
@@ -289,12 +290,186 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 4 - ((3 * winheight(0) + 18) / 37)
+let s:l = 1 - ((0 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-4
+1
 normal! 0
+tabedit models.rb
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <RightMouse> <Plug>delimitMateMRightMouse
+imap <buffer> <LeftMouse> <Plug>delimitMateMLeftMouse
+imap <buffer> <S-Up> <Plug>delimitMateS-Up
+imap <buffer> <S-Down> <Plug>delimitMateS-Down
+imap <buffer> <PageDown> <Plug>delimitMatePageDown
+imap <buffer> <PageUp> <Plug>delimitMatePageUp
+imap <buffer> <Down> <Plug>delimitMateDown
+imap <buffer> <Up> <Plug>delimitMateUp
+imap <buffer> <C-Right> <Plug>delimitMateC-Right
+imap <buffer> <C-Left> <Plug>delimitMateC-Left
+imap <buffer> <End> <Plug>delimitMateEnd
+imap <buffer> <Home> <Plug>delimitMateHome
+imap <buffer> <Right> <Plug>delimitMateRight
+imap <buffer> <Left> <Plug>delimitMateLeft
+imap <buffer> <Del> <Plug>delimitMateDel
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+inoremap <buffer> <Plug>delimitMateJumpMany =len(b:_l_delimitMate_buffer) ? delimitMate#Finish(0) : delimitMate#JumpMany()
+imap <buffer> <C-ScrollWheelRight> <Plug>delimitMateC-ScrollWheelRight
+imap <buffer> <S-ScrollWheelRight> <Plug>delimitMateS-ScrollWheelRight
+imap <buffer> <ScrollWheelRight> <Plug>delimitMateScrollWheelRight
+imap <buffer> <C-ScrollWheelLeft> <Plug>delimitMateC-ScrollWheelLeft
+imap <buffer> <S-ScrollWheelLeft> <Plug>delimitMateS-ScrollWheelLeft
+imap <buffer> <ScrollWheelLeft> <Plug>delimitMateScrollWheelLeft
+imap <buffer> <C-ScrollWheelDown> <Plug>delimitMateC-ScrollWheelDown
+imap <buffer> <S-ScrollWheelDown> <Plug>delimitMateS-ScrollWheelDown
+imap <buffer> <ScrollWheelDown> <Plug>delimitMateScrollWheelDown
+imap <buffer> <C-ScrollWheelUp> <Plug>delimitMateC-ScrollWheelUp
+imap <buffer> <S-ScrollWheelUp> <Plug>delimitMateS-ScrollWheelUp
+imap <buffer> <ScrollWheelUp> <Plug>delimitMateScrollWheelUp
+nnoremap <buffer> <silent> g} :exe        "ptjump =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> } :exe          "ptag =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> g] :exe      "stselect =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> g :exe        "stjump =RubyCursorIdentifier()"
+nnoremap <buffer> <silent>  :exe v:count1."stag =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> ] :exe v:count1."stag =RubyCursorIdentifier()"
+nnoremap <buffer> <silent>  :exe  v:count1."tag =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> g] :exe       "tselect =RubyCursorIdentifier()"
+nnoremap <buffer> <silent> g :exe         "tjump =RubyCursorIdentifier()"
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateEsc
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=:#
+setlocal commentstring=#\ %s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'ruby'
+setlocal filetype=ruby
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^\\s*\\<\\(load\\|w*require\\)\\>
+setlocal includeexpr=substitute(substitute(v:fname,'::','/','g'),'$','.rb','')
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=ri
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal nomodeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=.,NOTE:\ Gem.all_load_paths\ is\ deprecated\ with\ no\ replacement.\ It\ will\ be\ removed\ on\ or\ after\ 2011-10-01.\
+Gem.all_load_paths\ called\ from\ -e:1.\
+NOTE:\ Gem.all_partials\ is\ deprecated\ with\ no\ replacement.\ It\ will\ be\ removed\ on\ or\ after\ 2011-10-01.\
+Gem.all_partials\ called\ from\ ~/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/site_ruby/1.9.1/rubygems.rb:261.\
+NOTE:\ Gem.all_partials\ is\ deprecated\ with\ no\ replacement.\ It\ will\ be\ removed\ on\ or\ after\ 2011-10-01.\
+Gem.all_partials\ called\ from\ ~/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/site_ruby/1.9.1/rubygems.rb:261.\
+/home/greg/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/site_ruby/1.9.1,~/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/site_ruby/1.9.1/i686-linux,~/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/site_ruby,~/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/vendor_ruby/1.9.1,~/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/vendor_ruby/1.9.1/i686-linux,~/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/vendor_ruby,~/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1,~/.rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/i686-linux,~/.rvm/gems/ruby-1.9.3-p194/gems/actionmailer-3.2.8/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/activemodel-3.2.8/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/activerecord-3.2.8/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/activeresource-3.2.8/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.8/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/addressable-2.2.8/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/arel-3.0.2/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/bcrypt-ruby-3.0.1/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/builder-3.0.0/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/daemons-1.1.9/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/data_mapper-1.2.0/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/data_objects-0.10.8/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/dm-aggregates-1.2.0/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/dm-constraints-1.2.0/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/dm-core-1.2.0/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/dm-do-adapter-1.2.0/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/dm-migrations-1.2.0/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/dm-postgres-adapter-1.2.0/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/dm-serializer-1.2.2/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/dm-sqlite-adapter-1.2.0/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/dm-timestamps-1.2.0/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/dm-transactions-1.2.0/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/dm-types-1.2.2/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/dm-validations-1.2.0/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/do_postgres-0.10.8/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/do_sqlite3-0.10.8/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/erubis-2.7.0/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/eventmachine-0.12.10/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/fastercsv-1.5.5/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/haml-3.1.6/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/hike-1.2.1/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/i18n-0.6.0/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/journey-1.0.4/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/json-1.7.4/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/json-1.7.5/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/json_pure-1.7.4/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/mail-2.4.4/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/mime-types-1.19/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/multi_json-1.3.6/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/pg-0.14.0/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/polyglot-0.3.3/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/rack-cache-1.2/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/rack-ssl-1.3.2/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/rack-test-0.6.1/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/rails-3.2.8/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.8/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/rdoc-3.12/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/sinatra-1.1.0/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/sprockets-2.1.3/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/stringex-1.4.0/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/thin-1.4.1/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/thor-0.16.0/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/tilt-1.3.3/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/treetop-1.4.10/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/tzinfo-0.3.33/lib,~/.rvm/gems/ruby-1.9.3-p194/gems/uuidtools-2.1.3/lib,~/.rvm/gems/ruby-1
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=2
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.rb
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'ruby'
+setlocal syntax=ruby
+endif
+setlocal tabstop=2
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 18) / 37)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 019l
 tabedit views/index.erb
 set splitbelow splitright
 set nosplitbelow
@@ -470,7 +645,7 @@ if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
-normal! 018l
+normal! 01l
 tabedit views/layout.erb
 set splitbelow splitright
 set nosplitbelow
@@ -641,13 +816,13 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 24 - ((23 * winheight(0) + 18) / 37)
+let s:l = 1 - ((0 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-24
-normal! 08l
-tabnext 1
+1
+normal! 0
+tabnext 4
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
 endif
