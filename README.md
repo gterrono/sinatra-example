@@ -1,4 +1,4 @@
-coursegrapher
+PennApps Sinatra
 =============
 
 Install the heroku toolbelt: https://toolbelt.heroku.com
