@@ -2,5 +2,5 @@ require 'sinatra'
 require_relative 'models'
 
 get '/' do
-  'Hello World'
+  erb :index
 end
