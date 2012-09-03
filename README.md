@@ -9,3 +9,9 @@ If you have trouble with postgres or sqlite check http://datamapper.org/getting-
 You also may have to install gcc and g++
 
 Run with "foreman start"
+
+
+Uses
+----
+* Sinatra (http://sinatrarb.com)
+* HTML5 Boilerplate (http://html5boilerplate.com)
