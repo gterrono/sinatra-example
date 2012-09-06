@@ -4,7 +4,7 @@ require_relative 'helpers.rb'
 require_relative 'models'
 
 get '/' do
-  erb :index
+  erb :index, :locals => {:indent_home => true}
 end
 
 post '/' do
@@ -20,7 +20,7 @@ end
 
 get '/links' do
   @links = Link.all
-  erb :links
+  erb :links, :locals => {:indent_links => true}
 end
 
 get '/:keyword' do
