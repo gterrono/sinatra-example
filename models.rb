@@ -11,7 +11,7 @@ class Link
   property :url, String, :length => 200
   property :keyword, String, :unique => true,
     :messages => {
-      :is_unique => 'A URL with that keyword already exists. Please enter a new one, or use a default.'
+      :is_unique => 'A URL with that keyword already exists'
     }
   property :created_on, Date
   property :hits, Integer, :default => 0
