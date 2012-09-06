@@ -23,6 +23,10 @@ get '/links' do
   erb :links, :locals => {:indent_links => true}
 end
 
+get '/about' do
+  erb :about, :locals => {:indent_about => true}
+end
+
 get '/:keyword' do
   ensure_link_exists(params[:keyword]) do |link|
     link.update(:hits => link.hits + 1)
