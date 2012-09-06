@@ -15,3 +15,13 @@ post '/' do
     erb :index
   end
 end
+
+get '/:keyword' do
+  link = Link.first(:keyword => params[:keyword])
+  if link
+    link.update(:hits => link.hits + 1)
+    redirect link.url
+  else
+    404
+  end
+end
