@@ -1,0 +1,6 @@
+<h1>Here are all the registered links</h1>
+<ul>
+  <% @links.each do |link| %>
+    <li><a href="/link/<%= link.keyword %>"><%= link.keyword %></a></li>
+  <% end %>
+</ul>

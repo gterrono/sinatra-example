@@ -18,6 +18,11 @@ post '/' do
   end
 end
 
+get '/links' do
+  @links = Link.all
+  erb :links
+end
+
 get '/:keyword' do
   ensure_link_exists(params[:keyword]) do |link|
     link.update(:hits => link.hits + 1)
