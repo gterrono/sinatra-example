@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
+require_relative 'helpers.rb'
 require_relative 'models'
 
 get '/' do
@@ -18,12 +19,15 @@ post '/' do
 end
 
 get '/:keyword' do
-  link = Link.first(:keyword => params[:keyword])
-  if link
+  ensure_link_exists(params[:keyword]) do |link|
     link.update(:hits => link.hits + 1)
     redirect link.url
-  else
-    404
+  end
+end
+
+get '/link/:keyword' do
+  ensure_link_exists(params[:keyword]) do |link|
+    link.url
   end
 end
 
