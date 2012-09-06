@@ -14,5 +14,6 @@ Run with "foreman start"
 Uses
 ----
 * Sinatra (http://sinatrarb.com)
+* DataMapper (http://datamapper.com)
 * HTML5 Boilerplate (http://html5boilerplate.com)
 * Twitter Bootstrap (http://twitter.github.com/bootstrap)
