@@ -26,3 +26,7 @@ get '/:keyword' do
     404
   end
 end
+
+not_found do
+  'this is not the page you were looking for...'
+end
