@@ -10,7 +10,7 @@ end
 post '/' do
   link = Link.create(params)
   if link.saved?
-    'Your link was saved'
+    redirect "/link/#{link.keyword}"
   else
     @entered_data = params
     @error = link.errors.first[0]
