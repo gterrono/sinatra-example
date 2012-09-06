@@ -27,7 +27,7 @@ end
 
 get '/link/:keyword' do
   ensure_link_exists(params[:keyword]) do |link|
-    link.url
+    erb :link, :locals => {:link => link, :host => request.host, :port => request.port}
   end
 end
 
