@@ -17,4 +17,4 @@ class Link
   property :hits, Integer, :default => 0
 end
 
-DataMapper.auto_migrate!
+DataMapper.auto_upgrade!
