@@ -1,13 +1,14 @@
 <h1><%= link.keyword %> Link</h1>
 <p>
   <b>URL:</b>
-  <%= link.url %>
+  <a href='<%= link.url %>'><%= link.url %></a>
 </p>
 
 <p>
   <b>Shortcut:</b>
   <% middle = port == 80 ? "" : ":#{port}" %>
-  <%= "#{host}#{middle}/#{link.keyword}" %>
+  <% shortcut = "#{host}#{middle}/#{link.keyword}"  %>
+  <a href='<%= "http://#{shortcut}" %>'><%= shortcut %></a>
 </p>
 
 <p>
