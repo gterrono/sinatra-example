@@ -20,8 +20,8 @@ Running the app
 `foreman start`
 
 
-Uses
-----
+Libraries Used
+--------------
 * Sinatra (http://sinatrarb.com)
 * DataMapper (http://datamapper.org)
 * HTML5 Boilerplate (http://html5boilerplate.com)
