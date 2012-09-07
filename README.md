@@ -3,7 +3,7 @@ PennApps Sinatra
 
 About
 -----
-This is a little webapp designed to show how to win PennApps with some classy web-development (using Sinatra).
+This is a little webapp designed to show how to win PennApps with some classy web-development (using Sinatra). This app is live at http://pennapps-sinatra.herokuapp.com.
 
 Setup
 -----
