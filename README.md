@@ -1,9 +1,11 @@
 PennApps Sinatra
 =============
 
-Install the heroku toolbelt: https://toolbelt.heroku.com
-
-Run bundle install
+* Install Ruby 1.9.3
+* Install the heroku toolbelt: https://toolbelt.heroku.com
+* Install dm-sqlite-adapter and dm-postgres-adapter
+    * Check http://datamapper.org/getting-started.html under "Installing an Adapter" for instructions
+* Run `bundle install`
 
 If you have trouble with postgres or sqlite check http://datamapper.org/getting-started.html under "Installing an Adapter"
 You also may have to install gcc and g++
