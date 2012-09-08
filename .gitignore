@@ -1,5 +1,6 @@
 *.swp
 db.db
+sess
 
 *.gem
 *.rbc
