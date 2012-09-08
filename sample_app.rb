@@ -42,5 +42,5 @@ get '/link/:keyword' do
 end
 
 not_found do
-  'this is not the page you were looking for...'
+  erb 'This page does not exist'
 end
