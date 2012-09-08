@@ -34,13 +34,13 @@
           <a class="brand" href="/">PennApps Sinatra</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li <%= 'class="active"' if defined? indent_home %>>
+              <li <% yield_content :home_nav %>>
                 <a href="/">Home</a>
               </li>
-              <li <%= 'class="active"' if defined? indent_links %>>
+              <li <% yield_content :links_nav %>>
                 <a href="/links">Links</a>
               </li>
-              <li <%= 'class="active"' if defined? indent_about %>>
+              <li <% yield_content :about_nav %>>
                 <a href="/about">About</a>
               </li>
             </ul>

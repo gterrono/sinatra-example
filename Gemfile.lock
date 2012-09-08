@@ -75,6 +75,8 @@ GEM
       monkey-lib (~> 0.5.0)
       sinatra (~> 1.0)
       sinatra-sugar (~> 0.5.0)
+    sinatra-content-for (0.1)
+      sinatra
     sinatra-reloader (0.5.0)
       sinatra (~> 1.0)
       sinatra-advanced-routes (~> 0.5.0)
@@ -100,5 +102,6 @@ DEPENDENCIES
   json
   pg (= 0.14.0)
   sinatra
+  sinatra-content-for
   sinatra-reloader
   thin

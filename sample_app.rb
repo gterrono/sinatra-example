@@ -1,10 +1,11 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
+require 'sinatra/content_for'
 require_relative 'helpers.rb'
 require_relative 'models'
 
 get '/' do
-  erb :index, :locals => {:indent_home => true}
+  erb :index
 end
 
 post '/' do
@@ -20,11 +21,11 @@ end
 
 get '/links' do
   @links = Link.all
-  erb :links, :locals => {:indent_links => true}
+  erb :links
 end
 
 get '/about' do
-  erb :about, :locals => {:indent_about => true}
+  erb :about
 end
 
 get '/:keyword' do
