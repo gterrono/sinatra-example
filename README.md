@@ -18,7 +18,7 @@ You also may have to install gcc and g++
 Running the app
 ---------------
 * Run `foreman start` in the same directory as sample_app.rb
-* The app can be viewed in a browser at localhost:5000
+* The app can be viewed in a browser at http://localhost:5000
 
 
 Libraries Used
