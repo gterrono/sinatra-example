@@ -1,5 +1,5 @@
 PennApps Sinatra
-=============
+================
 
 About
 -----
@@ -20,6 +20,12 @@ Running the app
 * Run `foreman start` in the same directory as sample_app.rb
 * The app can be viewed in a browser at [localhost:5000] (http://localhost:5000)
 
+Deployment
+----------
+* Create a heroku account at http://heroku.com
+* Login to heroku by running `heroku login`
+* Run `heroku create`
+* Deploy with `git push heroku master`
 
 Libraries Used
 --------------
