@@ -13,8 +13,10 @@ post '/' do
   if link.saved?
     redirect "/link/#{link.keyword}"
   else
+    @has_errors = true
     @entered_data = params
-    @error = link.errors.first[0]
+    @url_error = link.errors[:url][0]
+    @keyword_error = link.errors[:keyword][0]
     erb :index
   end
 end

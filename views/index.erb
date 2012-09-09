@@ -3,14 +3,17 @@
 <h1>PennApps Sinatra!</h1>
 <h3>This sample app lets you shorten any link!</h3>
 <form method="post">
-  <div>
-    <input type="text" name="url" placeholder="Enter a URL" value=<%= @entered_data[:url] if @error %>>
-  </div>
-  <div class="control-group<%= ' error' if @error %>">
-    <% if @error %>
-      <label for="keyword"><%= @error %></label>
+  <div class="control-group<%= ' error' if @url_error %>">
+    <% if @url_error %>
+      <label for="url"><%= @url_error %></label>
     <% end %>
-    <input type="text" name="keyword" placeholder="Enter a custom keyword" value=<%= @entered_data[:keyword] if @error %>>
+    <input type="text" name="url" placeholder="Enter a URL" value=<%= @entered_data[:url] if @has_errors %>>
+  </div>
+  <div class="control-group<%= ' error' if @keyword_error %>">
+    <% if @keyword_error %>
+      <label for="keyword"><%= @keyword_error %></label>
+    <% end %>
+    <input type="text" name="keyword" placeholder="Enter a custom keyword" value=<%= @entered_data[:keyword] if @has_errors %>>
   </div>
   <button type="submit" class="btn">Submit</button>
 </form> 
